@@ -18,3 +18,35 @@ test("Testing input box", () => {
   expect(checkInput).toHaveAttribute("id", "userId");
   expect(checkInputPlaceHolder).toBeInTheDocument();
 });
+
+describe.only("UI test case group 1", () => {
+  test("Test Case 1", () => {
+    render(<App />);
+    const checkInput = screen.getByRole("textbox");
+    expect(checkInput).toHaveAttribute("name", "username");
+  });
+});
+
+describe.skip("UI test case group 2", () => {
+  test("Test Case 1", () => {
+    render(<App />);
+    const checkInput = screen.getByRole("textbox");
+    expect(checkInput).toHaveAttribute("name", "username");
+  });
+});
+
+describe("API test case group", () => {
+  test("Test Case 1", () => {
+    render(<App />);
+    const checkInput = screen.getByRole("textbox");
+    expect(checkInput).toHaveAttribute("name", "username");
+  });
+
+  describe("inner describe", () => {
+    test("Test Case 1", () => {
+      render(<App />);
+      const checkInput = screen.getByRole("textbox");
+      expect(checkInput).toHaveAttribute("name", "username");
+    });
+  });
+});
