@@ -3,7 +3,7 @@ import App from "./App";
 
 test("onChange event testing", () => {
   render(<App />);
-  const input = screen.getByRole("textbox");
-  fireEvent.change(input, { target: { value: "a" } });
-  expect(input.value).toBe("atest");
+  const btn = screen.getByRole("button");
+  fireEvent.click(btn);
+  expect(screen.getByText("updated data")).toBeInTheDocument();
 });
