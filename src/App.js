@@ -1,20 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [data, setData] = useState("");
   return (
     <div className="App">
-      <p>First React Test Case</p>
+      <h2>Test OnChange Event with Input Text</h2>
       <input
-        value=""
         type="text"
-        placeholder="Enter User Name"
-        name="username"
-        id="userId"></input>
-      <img
-        alt="tailwind"
-        title="Photo"
-        src="C:\Users\narayan\Desktop\Files\tailwind.png"></img>
+        value={data}
+        onChange={(e) => setData(e.target.value + "test")}></input>
     </div>
   );
 }
