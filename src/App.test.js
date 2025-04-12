@@ -1,14 +1,12 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App";
-import { handleOtherMethod } from "./helper";
 
-test("method test case 1", () => {
+test("get by role", () => {
   render(<App />);
-  const btn = screen.getByTestId("btn1");
-  fireEvent.click(btn);
-  expect(screen.getByText("hello")).toBeInTheDocument();
-});
-
-test("method test case 2", () => {
-  expect(handleOtherMethod()).toMatch("hi");
+  const inputField = screen.getByRole("textbox");
+  const btn = screen.getByRole("button");
+  expect(inputField).toBeInTheDocument();
+  expect(inputField).toHaveValue("hello");
+  expect(inputField).toBeDisabled();
+  expect(btn).toBeInTheDocument();
 });
