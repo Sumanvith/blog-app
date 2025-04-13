@@ -1,14 +1,15 @@
-import { getRoles, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("getAllByRole", () => {
+test("getByLabelText 1", () => {
   render(<App />);
-  const btns = screen.getAllByRole("button");
-  const options = screen.getAllByRole("option");
-  for (let i = 0; i < btns.length; i++) {
-    expect(btns[i]).toBeInTheDocument();
-  }
-  for (let i = 0; i < options.length; i++) {
-    expect(options[i]).toBeInTheDocument();
-  }
+  const input = screen.getByLabelText("Username");
+  expect(input).toBeInTheDocument();
+});
+
+test("getByLabelText 2", () => {
+  render(<App />);
+  const checkbox = screen.getByLabelText("Skills");
+  expect(checkbox).toBeInTheDocument();
+  expect(checkbox).toBeChecked();
 });

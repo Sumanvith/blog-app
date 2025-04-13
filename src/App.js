@@ -3,14 +3,12 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <h1>getAllByRole</h1>
-      <button>Click 1</button>
-      <button>Click 2</button>
-      <select>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-      </select>
+      <h1>getByLabelText</h1>
+      <label htmlFor="user-name">Username</label>
+      <input type="text" id="user-name"></input>
+
+      <label htmlFor="skills">Skills</label>
+      <input type="checkbox" id="skills" defaultChecked={true}></input>
     </div>
   );
 }
