@@ -1,28 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("getByText testing", () => {
+test("testing with test id", () => {
   render(<App />);
-  const btn = screen.getByText("Login");
-  const ptag = screen.getByText("Paragraph");
-  const htag = screen.getByText("Heading");
-  expect(btn).toBeInTheDocument();
-  expect(ptag).toBeInTheDocument();
-  expect(htag).toBeInTheDocument();
+  const divId = screen.getByTestId("div-test-id");
+  expect(divId).toBeInTheDocument();
 });
 
-test("getAllByText testing", () => {
+test("testing with same and mutliple test id", () => {
   render(<App />);
-  const htag = screen.getAllByText("Heading");
-  for (let i = 0; i < htag.length; i++) {
-    expect(htag[i]).toBeInTheDocument();
+  const divIds = screen.getAllByTestId("div-test-id");
+  for (let i in divIds) {
+    expect(divIds[i]).toBeInTheDocument();
   }
-});
-
-test("para testing", () => {
-  render(<App />);
-  const ptag = screen.getByText("Paragraph");
-  expect(ptag).toBeInTheDocument();
-  expect(ptag).toHaveClass("paraStyle");
-  expect(ptag).toHaveAttribute("id");
 });
