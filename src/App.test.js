@@ -1,16 +1,18 @@
-import { configure, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-configure({ testIdAttribute: "element-id" });
-
-test("test div with data test id Predefined", () => {
+test("testing with display value", () => {
   render(<App />);
-  const divElement = screen.getByTestId("test-id");
-  expect(divElement).toBeInTheDocument();
+  const input1 = screen.getByDisplayValue("hello1");
+  const textarea = screen.getByDisplayValue("hello2");
+  expect(input1).toBeInTheDocument();
+  expect(textarea).toBeInTheDocument();
 });
 
-test("test div with data test id Userdefined", () => {
+test("testing with same multiple display value", () => {
   render(<App />);
-  const divElement = screen.getByTestId("test-id");
-  expect(divElement).toBeInTheDocument();
+  const inputs = screen.getAllByDisplayValue("hello1");
+  for (let i in inputs) {
+    expect(inputs[i]).toBeInTheDocument();
+  }
 });
