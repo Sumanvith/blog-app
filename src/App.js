@@ -3,10 +3,10 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <h1>getByDisplayValue and getAllByDisplayValue</h1>
-      <input type="text" defaultValue={"hello1"}></input>
-      <input type="text" defaultValue={"hello1"}></input>
-      <textarea defaultValue={"hello2"}></textarea>
+      <h1>getByTitle and getAllByTitle</h1>
+      <button title="click me">Click me</button>
+      <span title="span tag">span 1</span>
+      <span title="span tag">span 2</span>
     </div>
   );
 }
