@@ -3,9 +3,9 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <h1>getByTestId and getAllByTestId</h1>
-      <div data-testid="div-test-id">Testing with Test id 1</div>
-      <div data-testid="div-test-id">Testing with Test id 2</div>
+      <h1>Overriding data-testid</h1>
+      <div data-testid="test-id">Dummy Text (Predefined)</div>
+      <div element-id="test-id">Dummy Text (Userdefined)</div>
     </div>
   );
 }

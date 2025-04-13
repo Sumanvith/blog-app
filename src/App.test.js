@@ -1,16 +1,16 @@
-import { render, screen } from "@testing-library/react";
+import { configure, render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("testing with test id", () => {
+configure({ testIdAttribute: "element-id" });
+
+test("test div with data test id Predefined", () => {
   render(<App />);
-  const divId = screen.getByTestId("div-test-id");
-  expect(divId).toBeInTheDocument();
+  const divElement = screen.getByTestId("test-id");
+  expect(divElement).toBeInTheDocument();
 });
 
-test("testing with same and mutliple test id", () => {
+test("test div with data test id Userdefined", () => {
   render(<App />);
-  const divIds = screen.getAllByTestId("div-test-id");
-  for (let i in divIds) {
-    expect(divIds[i]).toBeInTheDocument();
-  }
+  const divElement = screen.getByTestId("test-id");
+  expect(divElement).toBeInTheDocument();
 });
