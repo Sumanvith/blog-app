@@ -1,20 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("getAllByLabelText input", () => {
+test("ByPlaceholderText", () => {
   render(<App />);
-  const inputs = screen.getAllByLabelText("Username");
-  for (let i = 0; i < inputs.length; i++) {
-    expect(inputs[i]).toBeInTheDocument();
-    expect(inputs[i]).toHaveValue("hello");
-  }
+  const input = screen.getByPlaceholderText("enter username");
+  expect(input).toBeInTheDocument();
 });
 
-test("getAllByLabelText checkbox", () => {
+test("AllByPlaceholderText", () => {
   render(<App />);
-  const checkboxes = screen.getAllByLabelText("Skills");
-  for (let i = 0; i < checkboxes.length; i++) {
-    expect(checkboxes[i]).toBeInTheDocument();
-    expect(checkboxes[i]).toBeChecked();
+  const input = screen.getAllByPlaceholderText("enter username");
+  for (let i = 0; i < input.length; i++) {
+    expect(input[i]).toBeInTheDocument();
   }
 });
