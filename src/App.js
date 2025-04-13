@@ -3,9 +3,11 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <h1>ByPlaceholderText</h1>
-      <input type="text" placeholder="enter username"></input>
-      <input type="text" placeholder="enter username"></input>
+      <h1>getByText and getAllByText</h1>
+      <button>Login</button>
+      <p className="paraStyle" id="p1">Paragraph</p>
+      <h1>Heading</h1>
+      <h1>Heading</h1>
     </div>
   );
 }

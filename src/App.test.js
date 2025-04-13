@@ -1,16 +1,28 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("ByPlaceholderText", () => {
+test("getByText testing", () => {
   render(<App />);
-  const input = screen.getByPlaceholderText("enter username");
-  expect(input).toBeInTheDocument();
+  const btn = screen.getByText("Login");
+  const ptag = screen.getByText("Paragraph");
+  const htag = screen.getByText("Heading");
+  expect(btn).toBeInTheDocument();
+  expect(ptag).toBeInTheDocument();
+  expect(htag).toBeInTheDocument();
 });
 
-test("AllByPlaceholderText", () => {
+test("getAllByText testing", () => {
   render(<App />);
-  const input = screen.getAllByPlaceholderText("enter username");
-  for (let i = 0; i < input.length; i++) {
-    expect(input[i]).toBeInTheDocument();
+  const htag = screen.getAllByText("Heading");
+  for (let i = 0; i < htag.length; i++) {
+    expect(htag[i]).toBeInTheDocument();
   }
+});
+
+test("para testing", () => {
+  render(<App />);
+  const ptag = screen.getByText("Paragraph");
+  expect(ptag).toBeInTheDocument();
+  expect(ptag).toHaveClass("paraStyle");
+  expect(ptag).toHaveAttribute("id");
 });
