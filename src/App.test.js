@@ -1,16 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("test image with alt", () => {
+test("positive", () => {
   render(<App />);
-  const img = screen.getByAltText("dummy snap");
-  expect(img).toBeInTheDocument();
+  const input = screen.getByRole("textbox");
+  expect(input).toBeInTheDocument();
+  expect(input).toHaveValue("hello");
+  expect(input).toBeEnabled();
+  expect(input).toHaveAttribute("id");
+  expect(input).toHaveClass("test-style");
 });
 
-test("test image with mutliple alt", () => {
+test("negative", () => {
   render(<App />);
-  const imgs = screen.getAllByAltText("dummy snap");
-  for (let i in imgs) {
-    expect(imgs[i]).toBeInTheDocument();
-  }
+  const btn = screen.queryByRole("button");
+  expect(btn).not.toBeInTheDocument();
 });
