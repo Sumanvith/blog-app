@@ -1,16 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("button testing with title", () => {
+test("test image with alt", () => {
   render(<App />);
-  const btn = screen.getByTitle("click me");
-  expect(btn).toBeInTheDocument();
+  const img = screen.getByAltText("dummy snap");
+  expect(img).toBeInTheDocument();
 });
 
-test("testing with same multiple title", () => {
+test("test image with mutliple alt", () => {
   render(<App />);
-  const spans = screen.getAllByTitle("span tag");
-  for (let i in spans) {
-    expect(spans[i]).toBeInTheDocument();
+  const imgs = screen.getAllByAltText("dummy snap");
+  for (let i in imgs) {
+    expect(imgs[i]).toBeInTheDocument();
   }
 });
