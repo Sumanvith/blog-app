@@ -1,8 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import App from "./App";
 
-test("findBy", async () => {
+test("custom query", () => {
   render(<App />);
-  const el = await screen.findByText("Data Found", {}, { timeout: 4000 });
+  const el = document.querySelector("#testId");
   expect(el).toBeInTheDocument();
 });
