@@ -1,8 +1,10 @@
-import { render } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import App from "./App";
 
-test("custom query", () => {
+test("Test within function", () => {
   render(<App />);
-  const el = document.querySelector("#testId");
+  const el = screen.getByText("Hello World");
+  const subEl = within(el).getByText("Hey");
   expect(el).toBeInTheDocument();
+  expect(subEl).toBeInTheDocument();
 });
