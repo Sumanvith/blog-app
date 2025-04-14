@@ -1,18 +1,22 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("positive", () => {
+test("text match with string", () => {
   render(<App />);
-  const input = screen.getByRole("textbox");
-  expect(input).toBeInTheDocument();
-  expect(input).toHaveValue("hello");
-  expect(input).toBeEnabled();
-  expect(input).toHaveAttribute("id");
-  expect(input).toHaveClass("test-style");
+  const div1 = screen.getByText("Hello World");
+  const div2 = screen.getByText("hello world", { exact: false });
+  const div3 = screen.getByText("hello", { exact: false });
+  expect(div1).toBeInTheDocument();
+  expect(div2).toBeInTheDocument();
+  expect(div3).toBeInTheDocument();
 });
 
-test("negative", () => {
+test("text match with regex", () => {
   render(<App />);
-  const btn = screen.queryByRole("button");
-  expect(btn).not.toBeInTheDocument();
+  const div1 = screen.getByText(/lo Wo/);
+  const div2 = screen.getByText(/hello/i);
+  const div3 = screen.getByText(/hello w?orld/i);
+  expect(div1).toBeInTheDocument();
+  expect(div2).toBeInTheDocument();
+  expect(div3).toBeInTheDocument();
 });
