@@ -1,10 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("queryBy", () => {
+test("findBy", async () => {
   render(<App />);
-  const div1 = screen.queryByText("Login");
-  const div2 = screen.queryByText("Logout");
-  expect(div1).toBeInTheDocument();
-  expect(div2).not.toBeInTheDocument();
+  const el = await screen.findByText("Data Found", {}, { timeout: 4000 });
+  expect(el).toBeInTheDocument();
 });

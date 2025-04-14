@@ -1,11 +1,19 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  let login = false;
+  const [data, setData] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData(true);
+    }, 1000);
+  }, []);
+
   return (
     <div className="App">
-      <h1>queryBy</h1>
-      {login ? <button>Logout</button> : <button>Login</button>}
+      <h1>findBy</h1>
+      {data ? <h1>Data Found</h1> : <h1>Data not Found</h1>}
     </div>
   );
 }
