@@ -1,12 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { logRoles, prettyDOM, render, screen } from "@testing-library/react";
 import App from "./App";
-import userEvent from "@testing-library/user-event";
 
-test("Functional Props Testing and Mocking", async () => {
-  const testFunction = jest.fn();
-  userEvent.setup();
-  render(<App testFunction={testFunction} />);
-  const btn = screen.getByRole("button");
-  await userEvent.click(btn);
-  expect(testFunction).toBeCalled();
+test("Testing Component", () => {
+  render(<App />);
+  const el = screen.getByText("Heading 2");
+  expect(el).toBeInTheDocument();
+  const { container } = render(<App />);
+  console.log(prettyDOM(container));
+  const { debug } = render(<App />);
+  debug();
+  logRoles(container);
 });
