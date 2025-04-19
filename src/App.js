@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import { wait } from "@testing-library/user-event/dist/cjs/utils/index.js";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    let result = await fetch("https://jsonplaceholder.typicode.com/users");
+    result = await result.json();
+    setData(result);
+  };
   return (
     <div className="App">
-      <button onClick={() => setCount((prev) => prev + 1)}>{count}</button>
-      <h2>Heading 2</h2>
-      <h5>Heading 5</h5>
+      <h1>API Call</h1>
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
